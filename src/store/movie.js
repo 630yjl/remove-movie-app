@@ -9,7 +9,6 @@ const store = new Store({
   loading: false,
   message: 'Search for the movie title!'
 })
-//`https://www.omdbapi.com/?i=tt3896198&apikey=c945ff41&s=${store.state.searchText}&page=${page}
 
 //s - Movie title to search for
 //page - Page number to return (1페이지에 10개의 영화정보를 불러옴)
