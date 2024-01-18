@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "strict": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "api/**/*.ts"
+, "src/routes/Movie.js"  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

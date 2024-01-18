@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node-fetch": "^2.6.11",
     "parcel": "^2.10.3",
+    "typescript": "^5.3.3",
     "vercel": "^33.0.1"
   },
   "dependencies": {
