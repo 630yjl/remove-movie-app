@@ -1,11 +1,59 @@
 import { Store } from "../core/heropy";
 
-const store = new Store({
+export interface SimpleMovie {
+  Title: string
+  Year: string
+  imdbID: string
+  Type: string
+  Poster: string
+}
+interface DetailedMovie {
+  Title: string
+  Year: string
+  Rated: string
+  Released: string
+  Runtime: string
+  Genre: string
+  Director: string
+  Writer: string
+  Actors: string
+  Plot: string
+  Language: string
+  Country: string
+  Awards: string
+  Poster: string
+  Ratings: {  
+    Source: string
+    Value: string
+  }[]
+  Metascore: string
+  imdbRating: string
+  imdbVotes: string
+  imdbID: string
+  Type: string
+  DVD: string
+  BoxOffice: string
+  Production: string
+  Website: string
+  Response: string
+}
+
+interface State {
+  searchText: string
+  page: number
+  pageMax: number
+  movies: SimpleMovie[]
+  movie: DetailedMovie
+  loading: boolean
+  message: string
+}
+
+const store = new Store<State>({
   searchText: '',
   page: 1,
   pageMax: 1,
   movies: [],
-  movie: {},
+  movie: {} as DetailedMovie,
   loading: false,
   message: 'Search for the movie title!'
 })
@@ -13,7 +61,7 @@ const store = new Store({
 //s - Movie title to search for
 //page - Page number to return (1페이지에 10개의 영화정보를 불러옴)
 export default store
-export const searchMovies = async page => {
+export const searchMovies = async (page: number) => {
   store.state.loading = true
   store.state.page =  page //매개변수로 받은 page의 값을 할당 (viewmore버튼을 눌럿을떄 새로운 페이지 번호가 할당될 수 있게) 
   if (page === 1) {//새로운 내용 검색시 기존 화면에 보여지던 내용 초기화
@@ -46,7 +94,7 @@ export const searchMovies = async page => {
   }
 }
 
-export const getMovieDetails = async id => {
+export const getMovieDetails = async (id: string) => {
   try {//i - 영화 id값으로 불러오기 , plot - 영화 줄거리 가져오는 방식(short, full)
     const res = await fetch('/api/movie', { //api키를 서버에서 숨기기 위함 
       method: 'POST', //post- 정보를 담아서 보냄

@@ -1,7 +1,22 @@
 import { Store } from '../core/heropy'
 
-
-export default new Store({
+interface State {
+  photo: string
+  name: string
+  email: string
+  blog: string
+  github: string
+  repository: string
+}
+interface Root {
+  photo: string
+  name: string
+  email: string
+  blog: string
+  github: string
+  repository: string
+}
+export default new Store<State>({
   photo: 'https://i.pinimg.com/564x/2b/72/ac/2b72ac5e573b078ea39369bb1b7b0226.jpg',
   name: 'Yoonjeong Lim',
   email: '630yjl@gmail.com',
